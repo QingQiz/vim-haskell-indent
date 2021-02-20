@@ -62,7 +62,7 @@ function! GetHaskellIndent() abort
 
   " in
   if line =~# '\v^\s*<in>'
-    return s:indent('\v^\s*<in>', '\v^.*<let>\s*\zs', 0, -1)
+    return s:indent('\v^\s*<in>', '\v^.*<let>\s*\zs', 0, -1) - 3
   endif
 
   " =
@@ -145,7 +145,7 @@ function! GetHaskellIndent() abort
 
   if line =~# '\v<if>' && line !~# '\v^\s*#'
     if line !~# '\v<then>'
-      return match(line, '\v.*<if>\s*\zs')
+      return match(line, '\v.*<if>\s*\zs') - 3
     elseif line !~# '\v<else>'
       return match(line, '\v.*\zs<then>')
     endif
